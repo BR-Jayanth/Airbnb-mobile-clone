@@ -5,7 +5,7 @@ import starimg from "../images/Star.png"
 
 export default function Card(props) {
 
-    let url = "/img/" + props.item.coverImg;
+    let image = require(`../images/${ props.item.coverImg}`);
     let badgeText;
     if (props.item.openSpots === 0) {
         badgeText = "SOLD OUT";
@@ -17,8 +17,9 @@ export default function Card(props) {
         <div className="card">
             {
                 badgeText && <div className="status">{badgeText}</div>
+                
             }
-            <img className='card-img' src={url} alt="Item image" />
+            <img className='card-img' src={image} alt="Item image" />
             <div className="card-rating">
                 <img className='ratting-img' src={starimg} alt="Rating imagge" />
                 <span>{props.item.stats.rating}</span>
